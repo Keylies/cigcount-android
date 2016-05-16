@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CigCount</string>
+    <!-- MENU -->
+    <string name="action_packs">Packs</string>
+    <!-- MAIN ACTIVITY -->
+    <string name="button_add">Add a cigarette</string>
+    <string name="text_main_cig_number">Cigarettes smoked : </string>
+    <!-- CREATE PACK ACTIVITY -->
+    <string name="text_brand">Brand</string>
+    <string name="text_cig_number">Cigarettes number</string>
+    <string name="text_price">Price</string>
+    <string name="text_tobacco_rate">Tobacco rate</string>
+    <string name="text_paper_rate">Paper rate</string>
+    <string name="text_agents_rate">Agents rate</string>
+    <string name="button_add_pack">Add Pack</string>
+</resources>
