@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">CigCount</string>
     <!-- MENU -->
-    <string name="action_packs">Packs</string>
+    <string name="action_home">Home</string>
+    <string name="action_add_pack">Add Pack</string>
+    <string name="action_choose_pack">Choose Pack</string>
+    <string name="action_stats">Stats</string>
     <!-- MAIN ACTIVITY -->
-    <string name="button_add">Add a cigarette</string>
-    <string name="text_main_cig_number">Cigarettes smoked : </string>
+    <string name="text_main_current_pack">Current Pack : </string>
+    <string name="button_main_add_cig">Add a cigarette</string>
+    <string name="text_main_cig_number"></string>
+    <string name="text_main_cig_smoked">Cigarettes smoked</string>
     <!-- CREATE PACK ACTIVITY -->
     <string name="text_brand">Brand</string>
     <string name="text_cig_number">Cigarettes number</string>

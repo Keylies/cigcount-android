@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 import upmc.cigcount.model.Pack;
 
-public class CreatePack extends AppCompatActivity {
+public class CreatePackActivity extends BaseActivity {
 
     EditText brand;
     EditText cigNb;
@@ -38,6 +38,7 @@ public class CreatePack extends AppCompatActivity {
         tobaccoRate = (EditText)findViewById(R.id.editTobaccoRate);
         paperRate = (EditText)findViewById(R.id.editPaperRate);
         agentsRate = (EditText)findViewById(R.id.editAgentsRate);
+        // TODO : ajouter système d'ajout de composants persos avec un layout prédéfini
         addButton = (Button)findViewById(R.id.buttonAddPack);
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +52,8 @@ public class CreatePack extends AppCompatActivity {
     private void addPack() {
         if (allIsFilled()) {
             new Pack(brand.getText().toString(), Integer.parseInt(cigNb.getText().toString()), Float.valueOf(price.getText().toString()), Float.valueOf(tobaccoRate.getText().toString()), Float.valueOf(paperRate.getText().toString()), Float.valueOf(agentsRate.getText().toString()), new HashMap<String, Float>());
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            // TODO : envoyer message (Toast) sur la main de confirmation d'ajout
+            startActivity(new Intent(this, MainActivity.class));
         }
         else
             Toast.makeText(getApplicationContext(), "All fields must be filled", Toast.LENGTH_SHORT).show();

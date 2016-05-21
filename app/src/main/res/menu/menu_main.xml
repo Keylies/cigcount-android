@@ -3,8 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="upmc.cigcount.MainActivity">
     <item
-        android:id="@+id/action_packs"
+        android:id="@+id/actionHome"
         android:orderInCategory="100"
-        android:title="@string/action_packs"
+        android:title="@string/action_home"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/actionAddPack"
+        android:orderInCategory="100"
+        android:title="@string/action_add_pack"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/actionChoosePack"
+        android:orderInCategory="100"
+        android:title="@string/action_choose_pack"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/actionStats"
+        android:orderInCategory="100"
+        android:title="@string/action_stats"
         app:showAsAction="never" />
 </menu>
