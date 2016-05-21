@@ -13,6 +13,7 @@ public class User {
     public User() {
         cigSmoked = new ArrayList<Cigarette>();
         packs = new ArrayList<Pack>();
+        currentPack = null;
     }
 
     public void addCigarette() {
