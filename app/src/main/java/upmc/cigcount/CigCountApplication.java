@@ -35,14 +35,8 @@ public class CigCountApplication extends Application {
         return singleton;
     }
 
-    private void loadUser() {
-        File dataFile = new File(getFilesDir().getPath() + "/" + DATA_FILE);
-
-        if(dataFile.exists()) {
-            loadData();
-        } else { // First time CigCount is launched
-            user = new User();
-        }
+    public User user() {
+        return user;
     }
 
     public void saveData() {
@@ -54,6 +48,16 @@ public class CigCountApplication extends Application {
             fos.close();
         } catch(Exception e) {
             Log.i("Exception :", e.toString());
+        }
+    }
+
+    private void loadUser() {
+        File dataFile = new File(getFilesDir().getPath() + "/" + DATA_FILE);
+
+        if(dataFile.exists()) {
+            loadData();
+        } else { // First time CigCount is launched
+            user = new User();
         }
     }
 

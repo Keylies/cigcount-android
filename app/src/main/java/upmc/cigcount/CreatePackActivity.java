@@ -1,12 +1,10 @@
 package upmc.cigcount;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -50,8 +48,19 @@ public class CreatePackActivity extends BaseActivity {
     }
 
     private void addPack() {
+        CigCountApplication app = CigCountApplication.getInstance();
         if (allIsFilled()) {
-            new Pack(brand.getText().toString(), Integer.parseInt(cigNb.getText().toString()), Float.valueOf(price.getText().toString()), Float.valueOf(tobaccoRate.getText().toString()), Float.valueOf(paperRate.getText().toString()), Float.valueOf(agentsRate.getText().toString()), new HashMap<String, Float>());
+            Pack newPack = new Pack(
+                    brand.getText().toString(),
+                    Integer.parseInt(cigNb.getText().toString()),
+                    Float.valueOf(price.getText().toString()),
+                    Float.valueOf(tobaccoRate.getText().toString()),
+                    Float.valueOf(paperRate.getText().toString()),
+                    Float.valueOf(agentsRate.getText().toString()),
+                    new HashMap<String, Float>());
+
+            app.user().addPack(newPack);
+            app.saveData();
             // TODO : envoyer message (Toast) sur la main de confirmation d'ajout
             startActivity(new Intent(this, MainActivity.class));
         }

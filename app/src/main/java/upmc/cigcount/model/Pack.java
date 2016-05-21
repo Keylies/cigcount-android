@@ -26,4 +26,8 @@ public class Pack {
         this.agentsRate = agentsRate;
         this.components = components;
     }
+
+    public String brand() {
+        return brand;
+    }
 }

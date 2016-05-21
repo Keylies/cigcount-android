@@ -6,9 +6,8 @@
     <string name="action_choose_pack">Choose Pack</string>
     <string name="action_stats">Stats</string>
     <!-- MAIN ACTIVITY -->
-    <string name="text_main_current_pack">Current Pack : </string>
+    <string name="text_main_pack">Current Pack : </string>
     <string name="button_main_add_cig">Add a cigarette</string>
-    <string name="text_main_cig_number"></string>
     <string name="text_main_cig_smoked">Cigarettes smoked</string>
     <!-- CREATE PACK ACTIVITY -->
     <string name="text_brand">Brand</string>

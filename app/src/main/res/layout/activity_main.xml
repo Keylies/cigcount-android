@@ -7,23 +7,29 @@
     tools:context="upmc.cigcount.MainActivity"
     android:weightSum="1">
 
+    <TextView android:id="@+id/textPack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_main_pack"
+        android:layout_gravity="center_horizontal" />
+
     <TextView android:id="@+id/textCurrentPack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_main_current_pack"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center_horizontal" />
 
     <Button android:id="@+id/butAddCig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_main_add_cig"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="addCig" />
 
     <TextView android:id="@+id/textCigNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/text_main_cig_number"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.32" />
 
