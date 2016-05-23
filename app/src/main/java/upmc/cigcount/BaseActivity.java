@@ -29,7 +29,7 @@ public class BaseActivity extends AppCompatActivity {
                 startActivity(new Intent(this, CreatePackActivity.class));
                 return true;
             case R.id.actionChoosePack:
-                startActivity(new Intent(this, ChoosePackActivity.class));
+                startActivity(new Intent(this, ManagePacksActivity.class));
                 return true;
             case R.id.actionStats:
                 startActivity(new Intent(this, StatsActivity.class));

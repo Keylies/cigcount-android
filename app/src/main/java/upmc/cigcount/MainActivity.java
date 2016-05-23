@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import upmc.cigcount.fragments.ChangePackFragment;
+
 public class MainActivity extends BaseActivity {
 
     TextView currentPack;
@@ -19,8 +21,12 @@ public class MainActivity extends BaseActivity {
         app = CigCountApplication.getInstance();
         currentPack = (TextView) findViewById(R.id.textCurrentPack);
         cigNumber = (TextView) findViewById(R.id.textCigNumber);
-        currentPack.setText(app.user().currentPack());
+        setCurrentPack();
         setCigNumber();
+    }
+
+    protected void onResume(Bundle savedInstanceState) {
+        setCurrentPack();
     }
 
     public void addCig(View view) {
@@ -32,7 +38,16 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    public void changePack(View view) {
+        ChangePackFragment changeFragment = new ChangePackFragment();
+        changeFragment.show(getSupportFragmentManager(), "change");
+    }
+
     private void setCigNumber() {
         cigNumber.setText(String.valueOf(app.user().cigNumber()));
+    }
+
+    public void setCurrentPack() {
+        currentPack.setText(app.user().currentPack());
     }
 }

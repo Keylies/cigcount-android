@@ -1,5 +1,7 @@
 package upmc.cigcount.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import upmc.cigcount.CigCountApplication;
@@ -32,6 +34,23 @@ public class User {
     }
 
     public String currentPack() {
-        return currentPack.brand();
+
+        return currentPack != null ? currentPack.brand() : "Choose a Pack";
+    }
+
+    public void setCurrentPack(Pack pack) {
+        this.currentPack = pack;
+    }
+
+    public ArrayList<Pack> packs() {
+        return packs;
+    }
+
+    public void deletePack(int position) {
+        Pack packToDelete = packs.get(position);
+
+        if (packToDelete == currentPack)
+            currentPack = null;
+        packs.remove(packToDelete);
     }
 }

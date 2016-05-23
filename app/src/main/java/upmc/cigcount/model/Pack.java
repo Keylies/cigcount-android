@@ -30,4 +30,34 @@ public class Pack {
     public String brand() {
         return brand;
     }
+
+    public String nbCigarettes() {
+        return String.valueOf(nbCigarettes);
+    }
+
+    public String price() {
+        return String.valueOf(price);
+    }
+
+    public String tobaccoRate() {
+        return String.valueOf(tobaccoRate);
+    }
+
+    public String paperRate() {
+        return String.valueOf(paperRate);
+    }
+
+    public String agentsRate() {
+        return String.valueOf(agentsRate);
+    }
+
+    public void editPack(String brand, int nbCigarettes, float price, float tobaccoRate, float paperRate, float agentsRate, HashMap<String, Float> components) {
+        this.brand = brand;
+        this.nbCigarettes = nbCigarettes;
+        this.price = price;
+        this.tobaccoRate = tobaccoRate;
+        this.paperRate = paperRate;
+        this.agentsRate = agentsRate;
+        this.components = components;
+    }
 }

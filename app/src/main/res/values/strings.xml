@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">CigCount</string>
-    <!-- MENU -->
+    <!-- MAIN MENU -->
     <string name="action_home">Home</string>
     <string name="action_add_pack">Add Pack</string>
-    <string name="action_choose_pack">Choose Pack</string>
+    <string name="action_choose_pack">Manage Packs</string>
     <string name="action_stats">Stats</string>
+    <!-- PACKS MENU -->
+    <string name="action_delete_pack">Delete</string>
     <!-- MAIN ACTIVITY -->
     <string name="text_main_pack">Current Pack : </string>
+    <string name="button_main_change_pack">Choose a pack</string>
     <string name="button_main_add_cig">Add a cigarette</string>
     <string name="text_main_cig_smoked">Cigarettes smoked</string>
     <!-- CREATE PACK ACTIVITY -->
@@ -17,4 +20,14 @@
     <string name="text_paper_rate">Paper rate</string>
     <string name="text_agents_rate">Agents rate</string>
     <string name="button_add_pack">Add Pack</string>
+    <!-- CHANGE FRAGMENT -->
+    <string name="change_pack_fragment_add">Add a Pack</string>
+    <string name="change_pack_fragment_cancel">Cancel</string>
+    <!-- EDIT FRAGMENT -->
+    <string name="edit_pack_fragment_edit">Edit</string>
+    <string name="edit_pack_fragment_cancel">Cancel</string>
+    <!-- DELETE FRAGMENT -->
+    <string name="delete_pack_fragment_message">Are you sure ?</string>
+    <string name="delete_pack_fragment_confirm">Yes !</string>
+    <string name="delete_pack_fragment_cancel">Hum, no</string>
 </resources>

@@ -19,6 +19,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center_horizontal" />
 
+    <Button android:id="@+id/butChangePack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_main_change_pack"
+        android:layout_gravity="center_horizontal"
+        android:onClick="changePack" />
+
     <Button android:id="@+id/butAddCig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

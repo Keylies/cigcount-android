@@ -65,7 +65,7 @@ public class CreatePackActivity extends BaseActivity {
             startActivity(new Intent(this, MainActivity.class));
         }
         else
-            Toast.makeText(getApplicationContext(), "All fields must be filled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "All fields must be filled", Toast.LENGTH_SHORT).show();
     }
 
     private Boolean allIsFilled() {

@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".BaseActivity" />
-        <activity android:name=".ChoosePackActivity" />
+        <activity android:name=".ManagePacksActivity" />
         <activity android:name=".StatsActivity"></activity>
     </application>
 
