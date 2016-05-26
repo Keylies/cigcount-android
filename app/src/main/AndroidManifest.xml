@@ -25,7 +25,8 @@
         </activity>
         <activity android:name=".BaseActivity" />
         <activity android:name=".ManagePacksActivity" />
-        <activity android:name=".StatsActivity"></activity>
+        <activity android:name=".StatsActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

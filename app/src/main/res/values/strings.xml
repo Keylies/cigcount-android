@@ -5,6 +5,7 @@
     <string name="action_add_pack">Add Pack</string>
     <string name="action_choose_pack">Manage Packs</string>
     <string name="action_stats">Stats</string>
+    <string name="action_settings">Settings</string>
     <!-- PACKS MENU -->
     <string name="action_delete_pack">Delete</string>
     <!-- MAIN ACTIVITY -->
@@ -20,6 +21,8 @@
     <string name="text_paper_rate">Paper rate</string>
     <string name="text_agents_rate">Agents rate</string>
     <string name="button_add_pack">Add Pack</string>
+    <!-- SETTINGS ACTIVITY -->
+    <string name="button_settings_reset_data">Reset data</string>
     <!-- CHANGE FRAGMENT -->
     <string name="change_pack_fragment_add">Add a Pack</string>
     <string name="change_pack_fragment_cancel">Cancel</string>

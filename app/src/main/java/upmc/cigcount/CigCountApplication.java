@@ -11,7 +11,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 
+import upmc.cigcount.model.Cigarette;
+import upmc.cigcount.model.Pack;
 import upmc.cigcount.model.User;
 
 /**
@@ -37,6 +42,11 @@ public class CigCountApplication extends Application {
 
     public User user() {
         return user;
+    }
+
+    public void resetData() {
+        user = new User();
+        saveData();
     }
 
     public void saveData() {
@@ -67,6 +77,7 @@ public class CigCountApplication extends Application {
         try {
             fis = openFileInput(DATA_FILE);
             user = gson.fromJson(new BufferedReader(new InputStreamReader(fis)), User.class);
+            Log.i("user", user.toString());
             fis.close();
         } catch(Exception e) {
             Log.i("Exception :", e.toString());
@@ -90,5 +101,26 @@ public class CigCountApplication extends Application {
         } catch(Exception e) {
             Log.i("Exception :", e.toString());
         }
+    }
+
+    private void addTestData() {
+        Pack newPack = new Pack("test", 20, 20, 20, 20, 20, new HashMap<String, Float>());
+        user.addPack(newPack);
+        user.setCurrentPack(newPack);
+
+        for(int i = 1; i <= 3; i++) {
+            user.addPack(new Pack("test" + i, 20, 20, 20, 20, 20, new HashMap<String, Float>()));
+        }
+
+        Date today = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(today);
+        for(int i = 1; i <= 70; i++) {
+            c.add(Calendar.DATE, i);
+            for(int j = 0; j < 3; j++) {
+                user.cigSmoked().add(new Cigarette(newPack, c.getTime()));
+            }
+        }
+
     }
 }

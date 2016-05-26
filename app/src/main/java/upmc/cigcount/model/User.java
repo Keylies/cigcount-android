@@ -33,6 +33,10 @@ public class User {
         return cigSmoked.size();
     }
 
+    public ArrayList<Cigarette> cigSmoked() {
+        return cigSmoked;
+    }
+
     public String currentPack() {
 
         return currentPack != null ? currentPack.brand() : "Choose a Pack";

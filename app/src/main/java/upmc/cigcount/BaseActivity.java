@@ -34,6 +34,9 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.actionStats:
                 startActivity(new Intent(this, StatsActivity.class));
                 return true;
+            case R.id.actionSettings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
