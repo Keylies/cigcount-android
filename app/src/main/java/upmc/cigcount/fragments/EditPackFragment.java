@@ -131,7 +131,7 @@ public class EditPackFragment extends DialogFragment {
     private Boolean brandExists() {
         String currentBrand = brand.getText().toString();
         for(Pack p : app.user().packs())
-            if (currentBrand.equals(p.brand()))
+            if (p != pack && currentBrand.equals(p.brand()))
                 return true;
         return false;
     }
