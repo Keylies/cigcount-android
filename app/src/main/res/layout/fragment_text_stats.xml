@@ -19,7 +19,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cig_smoked_total"
         android:id="@+id/cigSmokedTotalValue" />
 
     <TextView
@@ -31,7 +30,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/life_loss_total"
         android:id="@+id/lifeLossTotalValue" />
 
     <TextView
@@ -43,7 +41,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/money_loss_total"
         android:id="@+id/moneyLossTotalValue" />
 
     <TextView
@@ -55,7 +52,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tobacco_smoked_total"
         android:id="@+id/tobaccoSmokedTotalValue" />
 
     <TextView
@@ -67,7 +63,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/paper_burnt_total"
         android:id="@+id/paperBurntTotalValue" />
 
     <TextView
@@ -79,7 +74,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/agents_smoked_total"
         android:id="@+id/agentsSmokedTotalValue" />
 
 </LinearLayout>

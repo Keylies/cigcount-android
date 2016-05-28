@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:hint="@string/text_brand"
+            android:text="@string/text_brand"
             android:id="@+id/textBrand"
             android:layout_gravity="center_horizontal" />
 
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:hint="@string/text_cig_number"
+            android:text="@string/text_cig_number"
             android:id="@+id/textCigNumber"
             android:layout_gravity="center_horizontal" />
 
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:hint="@string/text_price"
+            android:text="@string/text_price"
             android:id="@+id/textPrice"
             android:layout_gravity="center_horizontal" />
 
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:hint="@string/text_tobacco_rate"
+            android:text="@string/text_tobacco_rate"
             android:id="@+id/textTobaccoRate"
             android:layout_gravity="center_horizontal" />
 
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:hint="@string/text_paper_rate"
+            android:text="@string/text_paper_rate"
             android:id="@+id/textPaperRate"
             android:layout_gravity="center_horizontal" />
 
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:hint="@string/text_agents_rate"
+            android:text="@string/text_agents_rate"
             android:id="@+id/textAgentesRate"
             android:layout_gravity="center_horizontal" />
 
@@ -115,7 +115,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/button_add_pack"
+            android:text="@string/button_add_pack"
             android:id="@+id/buttonAddPack"
             android:layout_gravity="center_horizontal"
             android:onClick="addPack"/>

@@ -2,6 +2,7 @@ package upmc.cigcount.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Cigarette {
     private Date date;
@@ -17,7 +18,7 @@ public class Cigarette {
      * @return the formatted date
      */
     public String smokedDate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         return formatter.format(date);
     }
 

@@ -1,10 +1,19 @@
 # cigcount-android
 Java LP Projet Web
+
 Par Baptiste Le Bescond et Clément Leboucher
 
 ## CigCount
 
 CigCount est une application vous permettant de compter facilement les cigarettes fumées pour chacun de vos paquets et de vous offrir de nombreuses statistiques.
+
+## Technique
+
+La bibliothèque MPAndroidChart a été utilisée afin de générer le graphique de l'activité Stats.
+https://github.com/PhilJay/MPAndroidChart
+
+La bibliothèque json-io a été utilisée afin de stocker localement les données de l'application en format JSON.
+https://github.com/jdereg/json-io
 
 ## Utilisation
 

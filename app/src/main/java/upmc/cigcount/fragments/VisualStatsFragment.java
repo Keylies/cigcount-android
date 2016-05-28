@@ -56,6 +56,7 @@ public class VisualStatsFragment extends Fragment {
         setChartData();
         chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         chart.animateXY(500, 500);
+        chart.setDescription("");
 
         return view;
     }

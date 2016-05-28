@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import upmc.cigcount.CigCountApplication;
 import upmc.cigcount.R;
@@ -76,40 +77,45 @@ public class TextStatsFragment extends Fragment {
      */
     private void setStats() {
         textCigSmoked = selectedPack != null ? cigsByPack() : cigSmoked;
+        HashMap<String, String> stats = getStats();
 
-        cigSmokedTotalValue.setText(String.valueOf(textCigSmoked.size()));
-        lifeLossTotalValue.setText(String.valueOf(getLifeLoss()));
-        moneyLossTotalValue.setText(String.valueOf(getMoneyLoss()));
+        cigSmokedTotalValue.setText(stats.get("cigSmoked"));
+        lifeLossTotalValue.setText(stats.get("lifeLoss"));
+        moneyLossTotalValue.setText(stats.get("moneyLoss") + "€");
+        tobaccoSmokedTotalValue.setText(stats.get("tobaccoSmoked") + "g");
+        paperBurntTotalValue.setText(stats.get("paperSmoked") + "g");
+        agentsSmokedTotalValue.setText(stats.get("agentsSmoked") + "g");
     }
 
     /**
-     * Get the number of minutes of life lost
-     * @return the number of minutes
+     * Get stats for smoked cigarettes by packs components
+     * @return a HashMap of Strings with stats
      */
-    private int getLifeLoss() {
-        return textCigSmoked.size() * 11;
-    }
-
-    /**
-     * Get the amount of money lost
-     * @return the amount of money
-     */
-    private float getMoneyLoss() {
+    private HashMap<String, String> getStats() {
+        HashMap<String, String> stats = new HashMap<>();
+        int cigSmoked = textCigSmoked.size();
+        int lifeLoss = textCigSmoked.size() * 11;
         float moneyLoss = 0;
+        float tobaccoSmoked = 0;
+        float paperSmoked = 0;
+        float agentsSmoked = 0;
 
-        for(Cigarette c : textCigSmoked)
-            moneyLoss += getSingleCigPrice(c.pack());
+        for(Cigarette c : textCigSmoked) {
+            Pack p = c.pack();
+            moneyLoss += p.singleCigPrice();
+            tobaccoSmoked += p.singleCigTobacco();
+            paperSmoked += p.singleCigPaper();
+            agentsSmoked += p.singleCigAgents();
+        }
 
-        return moneyLoss;
-    }
+        stats.put("cigSmoked", String.valueOf(cigSmoked));
+        stats.put("lifeLoss", String.valueOf(lifeLoss));
+        stats.put("moneyLoss", String.format("%.2f", moneyLoss));
+        stats.put("tobaccoSmoked", String.format("%.2f", tobaccoSmoked));
+        stats.put("paperSmoked", String.format("%.2f", paperSmoked));
+        stats.put("agentsSmoked", String.format("%.2f", agentsSmoked));
 
-    /**
-     * Get a price for a single cigarette for a particular pack
-     * @param pack the selected pack
-     * @return the price of a cigarette
-     */
-    private float getSingleCigPrice(Pack pack) {
-        return pack.singleCigPrice();
+        return stats;
     }
 
     /**

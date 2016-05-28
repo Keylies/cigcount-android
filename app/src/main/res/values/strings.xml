@@ -17,9 +17,9 @@
     <string name="text_brand">Brand</string>
     <string name="text_cig_number">Cigarettes number</string>
     <string name="text_price">Price</string>
-    <string name="text_tobacco_rate">Tobacco rate</string>
-    <string name="text_paper_rate">Paper rate</string>
-    <string name="text_agents_rate">Agents rate</string>
+    <string name="text_tobacco_rate">Tobacco rate (as a %)</string>
+    <string name="text_paper_rate">Paper rate (as a %)</string>
+    <string name="text_agents_rate">Agents rate (as a %)</string>
     <string name="button_add_pack">Add Pack</string>
     <string name="same_brand">This brand already exists</string>
     <string name="not_filled">All fields must be filled</string>
@@ -42,7 +42,7 @@
     <!-- STATS ACTIVITY -->
     <string name="all_packs_text">All Packs</string>
     <string name="cig_smoked_total">Cigarettes smoked : </string>
-    <string name="life_loss_total">Life loss : </string>
+    <string name="life_loss_total">Minutes of life lost : </string>
     <string name="money_loss_total">Money spent : </string>
     <string name="tobacco_smoked_total">Tobacco smoked : </string>
     <string name="paper_burnt_total">Paper burnt : </string>
