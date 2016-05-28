@@ -1,14 +1,7 @@
 package upmc.cigcount.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
-import upmc.cigcount.CigCountApplication;
-
-/**
- * Created by Clément on 16/05/2016.
- */
 public class User {
     private ArrayList<Cigarette> cigSmoked;
     private ArrayList<Pack> packs;
@@ -20,6 +13,10 @@ public class User {
         currentPack = null;
     }
 
+    /**
+     * Check if a current pack is defined before adding a cigarette
+     * @return true if a cigarette was successfully added
+     */
     public boolean addCigarette() {
         return currentPack == null ? false : cigSmoked.add(new Cigarette(currentPack));
     }
@@ -37,8 +34,11 @@ public class User {
         return cigSmoked;
     }
 
-    public String currentPack() {
+    public void resetCigs() {
+        cigSmoked = new ArrayList<>();
+    }
 
+    public String currentPack() {
         return currentPack != null ? currentPack.brand() : "Choose a Pack";
     }
 
@@ -50,6 +50,16 @@ public class User {
         return packs;
     }
 
+    public void resetPacks() {
+        packs = new ArrayList<>();
+        currentPack = null;
+    }
+
+    /**
+     * Delete a pack
+     * If deleted pack is the current pack, current pack is set to null
+     * @param position pack position in the list
+     */
     public void deletePack(int position) {
         Pack packToDelete = packs.get(position);
 

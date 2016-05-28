@@ -117,7 +117,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/button_add_pack"
             android:id="@+id/buttonAddPack"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="addPack"/>
     </LinearLayout>
 
 </RelativeLayout>

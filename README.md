@@ -1,5 +1,6 @@
 # cigcount-android
 Java LP Projet Web
+Par Baptiste Le Bescond et Clément Leboucher
 
 ## CigCount
 
@@ -33,4 +34,16 @@ Appuyer sur un paquet pour ouvrir sa fenêtre d'édition. Effectuez vos changeme
 #### Supprimer un paquet
 
 Appuyer longuement sur le paquet à supprimer. Un menu s'ouvre alors vous permettant de selectionner plusieurs paquets dans la liste. Une fois les paquets selectionnés, appuyer sur l'icône en forme de poubelle du menu. Appuyer ensuite sur "YES" dans l'écran de confirmation pour supprimer le(s) paquet(s).
+
+### Afficher les statistiques
+
+Pour afficher les statistiques, appuyer sur le menu "Stats". Par défaut, les statistiques sur l'ensemble des paquets sont
+affichées. Pour en choisir un en particuler, cliquez sur "CHOOSE A PACK".
+
+Le premier onglet affiche un graphique du nombre de cigarettes fumées par date.
+Le deuxième onglet affiche des statistiques textuelles comme le montant d'argent dépensé, le nombre de minutes de vie perdues, et autres réjouissances.
+
+### Réinitialiser les données
+
+Pour remettre à 0 le compteur de cigarettes, effacer tous les paquets ou effacer l'ensemble des données, appuyer sur le menu "Settings" et appuyer sur me bouton souhaité.
 

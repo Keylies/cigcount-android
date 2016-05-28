@@ -1,33 +1,27 @@
 package upmc.cigcount.fragments;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.HashMap;
 
 import upmc.cigcount.CigCountApplication;
-import upmc.cigcount.MainActivity;
 import upmc.cigcount.ManagePacksActivity;
 import upmc.cigcount.R;
 import upmc.cigcount.model.Pack;
 
+/**
+ * Dialog fragment which displays pack information and allows to edit
+ */
 public class EditPackFragment extends DialogFragment {
 
-    private int position;
     private Pack pack;
     private View v;
     private EditText brand;
@@ -36,6 +30,7 @@ public class EditPackFragment extends DialogFragment {
     private EditText tobaccoRate;
     private EditText paperRate;
     private EditText agentsRate;
+    private CigCountApplication app;
 
     public EditPackFragment() {
         // Required empty public constructor
@@ -48,8 +43,9 @@ public class EditPackFragment extends DialogFragment {
         v = inflater.inflate(R.layout.fragment_edit_pack, null);
 
         Bundle args = getArguments();
-        position = args.getInt("position");
-        pack = CigCountApplication.getInstance().user().packs().get(position);
+        int position = args.getInt("position");
+        app = CigCountApplication.getInstance();
+        pack = app.user().packs().get(position);
 
         builder.setView(v);
         builder.setTitle("Edit " + pack.brand());
@@ -69,6 +65,9 @@ public class EditPackFragment extends DialogFragment {
         return builder.create();
     }
 
+    /**
+     * Instantiate graphical elements
+     */
     private void getPackDetails() {
         brand = (EditText) v.findViewById(R.id.editBrand);
         cigNb = (EditText) v.findViewById(R.id.editCig);
@@ -85,28 +84,55 @@ public class EditPackFragment extends DialogFragment {
         agentsRate.setText(pack.agentsRate());
     }
 
+    /**
+     * Get values from editTexts and call for pack edition
+     */
     private void editPack() {
         if (allIsFilled()) {
-            pack.editPack(
-                brand.getText().toString(),
-                Integer.parseInt(cigNb.getText().toString()),
-                Float.valueOf(price.getText().toString()),
-                Float.valueOf(tobaccoRate.getText().toString()),
-                Float.valueOf(paperRate.getText().toString()),
-                Float.valueOf(agentsRate.getText().toString()),
-                new HashMap<String, Float>());
-            ((ManagePacksActivity) getActivity()).refreshAdapter();
-            CigCountApplication.getInstance().saveData();
+            if (!brandExists()) {
+                pack.editPack(
+                        brand.getText().toString(),
+                        Integer.parseInt(cigNb.getText().toString()),
+                        Float.valueOf(price.getText().toString()),
+                        Float.valueOf(tobaccoRate.getText().toString()),
+                        Float.valueOf(paperRate.getText().toString()),
+                        Float.valueOf(agentsRate.getText().toString()),
+                        new HashMap<String, Float>());
+                ((ManagePacksActivity) getActivity()).refreshAdapter();
+                CigCountApplication.getInstance().saveData();
+            } else
+                Toast.makeText(getContext(), R.string.same_brand, Toast.LENGTH_SHORT).show();
         }
         else
-            Toast.makeText(getContext(), "All fields must be filled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.not_filled, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Check if all editTexts are filled
+     * @return true if all editTexts are not empty, false if not
+     */
     private Boolean allIsFilled() {
         return !isEmpty(brand) && !isEmpty(cigNb) && !isEmpty(price) && !isEmpty(tobaccoRate) && !isEmpty(paperRate) && !isEmpty(agentsRate);
     }
 
+    /**
+     * Check if an editText field is empty
+     * @param editText an editText field
+     * @return true if there is not editText content
+     */
     private Boolean isEmpty(EditText editText) {
         return editText.getText().toString().trim().length() <= 0;
+    }
+
+    /**
+     * Check if a pack with a same brand has been created
+     * @return true if a same pack's brand already exists
+     */
+    private Boolean brandExists() {
+        String currentBrand = brand.getText().toString();
+        for(Pack p : app.user().packs())
+            if (currentBrand.equals(p.brand()))
+                return true;
+        return false;
     }
 }

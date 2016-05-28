@@ -21,11 +21,17 @@
     <string name="text_paper_rate">Paper rate</string>
     <string name="text_agents_rate">Agents rate</string>
     <string name="button_add_pack">Add Pack</string>
+    <string name="same_brand">This brand already exists</string>
+    <string name="not_filled">All fields must be filled</string>
     <!-- SETTINGS ACTIVITY -->
-    <string name="button_settings_reset_data">Reset data</string>
+    <string name="button_settings_reset_cigs">Reset Cigarettes</string>
+    <string name="button_settings_reset_packs">Reset Packs</string>
+    <string name="button_settings_reset_data">Reset all data</string>
     <!-- CHANGE FRAGMENT -->
+    <string name="change_pack_fragment_title">Choose a Pack</string>
     <string name="change_pack_fragment_add">Add a Pack</string>
     <string name="change_pack_fragment_cancel">Cancel</string>
+    <string name="change_pack_fragment_empty">Add a Pack first !</string>
     <!-- EDIT FRAGMENT -->
     <string name="edit_pack_fragment_edit">Edit</string>
     <string name="edit_pack_fragment_cancel">Cancel</string>
@@ -33,4 +39,13 @@
     <string name="delete_pack_fragment_message">Are you sure ?</string>
     <string name="delete_pack_fragment_confirm">Yes !</string>
     <string name="delete_pack_fragment_cancel">Hum, no</string>
+    <!-- STATS ACTIVITY -->
+    <string name="all_packs_text">All Packs</string>
+    <string name="cig_smoked_total">Cigarettes smoked : </string>
+    <string name="life_loss_total">Life loss : </string>
+    <string name="money_loss_total">Money spent : </string>
+    <string name="tobacco_smoked_total">Tobacco smoked : </string>
+    <string name="paper_burnt_total">Paper burnt : </string>
+    <string name="agents_smoked_total">Agents smoked : </string>
+    <string name="no_data">No smoked cigarettes for this Pack !</string>
 </resources>

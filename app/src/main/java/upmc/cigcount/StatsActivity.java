@@ -1,66 +1,67 @@
 package upmc.cigcount;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import upmc.cigcount.adapters.StatsPagerAdapter;
+import upmc.cigcount.fragments.StatsChangePackFragment;
+import upmc.cigcount.model.Pack;
 
-import java.util.ArrayList;
-
-import upmc.cigcount.model.Cigarette;
-
+/**
+ * Show visual and textual statistics for all packs or a particular one
+ */
 public class StatsActivity extends BaseActivity {
 
-    private HorizontalBarChart chart;
+    private TextView currentPackText;
+    private Pack currentPack;
+    private StatsPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        chart = (HorizontalBarChart) findViewById(R.id.chart);
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        currentPackText = (TextView) findViewById(R.id.textCurrentPack);
+        currentPack = null;
+        adapter = new StatsPagerAdapter(getSupportFragmentManager(), this);
 
-        setChartData();
-        chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        chart.animateXY(500, 500);
-
+        currentPackText.setText(R.string.all_packs_text);
+        pager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(pager);
     }
 
-    private void setChartData() {
-        ArrayList<Cigarette> cigSmoked = CigCountApplication.getInstance().user().cigSmoked();
-        ArrayList<String> yDates = new ArrayList<>();
-        ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-        ArrayList<BarEntry> xNumbers = new ArrayList<>();
-        String date = cigSmoked.get(0).smokedDate();
-        int count = 1;
-
-        yDates.add(date);
-        for(int i = 1; i < cigSmoked.size(); i++) {
-            if ( !date.equals(cigSmoked.get(i).smokedDate()) ) {
-                xNumbers.add(new BarEntry(count, yDates.size() - 1));
-                count = 1;
-                date = cigSmoked.get(i).smokedDate();
-                yDates.add(date);
-            }
-            count++;
-        }
-        xNumbers.add(new BarEntry(count - 1, yDates.size() - 1));
-
-        BarDataSet dataSet = new BarDataSet(xNumbers, "Cigarettes smoked");
-        dataSets.add(dataSet);
-        BarData data = new BarData(yDates, dataSets);
-        chart.setData(data);
-        chart.invalidate();
+    /**
+     * Open packs list
+     * @param view
+     */
+    public void changePack(View view) {
+        StatsChangePackFragment changeFragment = new StatsChangePackFragment();
+        changeFragment.show(getSupportFragmentManager(), "change");
     }
+
+    /**
+     * Set the new current pack and call for stats update
+     * @param pack the new selected pack
+     */
+    public void setCurrentPack(Pack pack) {
+        currentPack = pack;
+        adapter.updateStats(currentPack);
+        currentPackText.setText(currentPack.brand());
+    }
+
+    /**
+     * Call for stats update with all packs
+     * @param view
+     */
+    public void allPacks(View view) {
+        currentPack = null;
+        adapter.updateStats(currentPack);
+        currentPackText.setText(R.string.all_packs_text);
+    }
+
 }

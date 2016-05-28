@@ -9,6 +9,9 @@ import android.support.v7.app.AlertDialog;
 import upmc.cigcount.ManagePacksActivity;
 import upmc.cigcount.R;
 
+/**
+ * Show confirmation window before delete packs
+ */
 public class DeletePackFragment extends DialogFragment {
 
     public DeletePackFragment() {

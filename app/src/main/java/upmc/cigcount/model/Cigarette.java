@@ -3,9 +3,6 @@ package upmc.cigcount.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Clément on 16/05/2016.
- */
 public class Cigarette {
     private Date date;
     private Pack pack;
@@ -15,13 +12,16 @@ public class Cigarette {
         this.pack = pack;
     }
 
-    public Cigarette(Pack pack, Date date) {
-        this.date = date;
-        this.pack = pack;
-    }
-
+    /**
+     * Get the formatted date when the cigarette was smoked
+     * @return the formatted date
+     */
     public String smokedDate() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(date);
+    }
+
+    public Pack pack() {
+        return pack;
     }
 }

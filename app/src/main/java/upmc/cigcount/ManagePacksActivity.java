@@ -1,7 +1,5 @@
 package upmc.cigcount;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
@@ -13,10 +11,17 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
+import upmc.cigcount.adapters.PacksAdapter;
 import upmc.cigcount.fragments.DeletePackFragment;
 import upmc.cigcount.fragments.EditPackFragment;
+import upmc.cigcount.model.Cigarette;
 import upmc.cigcount.model.User;
 
+/**
+ * Allows to edit and delete packs
+ */
 public class ManagePacksActivity extends BaseActivity {
 
     User user;
@@ -34,6 +39,9 @@ public class ManagePacksActivity extends BaseActivity {
         setList();
     }
 
+    /**
+     * Enable the multi choice menu with a long click on a pack
+     */
     private void setList() {
         packsList.setAdapter(adapter);
         packsList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
@@ -78,17 +86,30 @@ public class ManagePacksActivity extends BaseActivity {
         });
     }
 
+    /**
+     * Delete checked packs and cigarettes which were added with these packs
+     */
     public void deleteSelectedPacks() {
         int len = adapter.getCount();
         SparseBooleanArray checked = packsList.getCheckedItemPositions();
+        ArrayList<Cigarette> cigSmoked = user.cigSmoked();
 
-        for (int i = len - 1; i >= 0 ; i--)
-            if (checked.get(i))
+        for (int i = len - 1; i >= 0; i--)
+            if (checked.get(i)) {
+                for(int j = cigSmoked.size() - 1; j >= 0; j--)
+                    if(cigSmoked.get(j).pack() == user.packs().get(i))
+                        cigSmoked.remove(j);
                 user.deletePack(i);
+            }
+
         CigCountApplication.getInstance().saveData();
         refreshAdapter();
     }
 
+    /**
+     * Open the pack editor fragment
+     * @param position pack position in the list
+     */
     private void editPack(int position) {
         EditPackFragment editFragment = new EditPackFragment();
         Bundle args = new Bundle();

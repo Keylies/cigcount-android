@@ -2,7 +2,6 @@ package upmc.cigcount.fragments;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -10,13 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import upmc.cigcount.CigCountApplication;
-import upmc.cigcount.CreatePackActivity;
-import upmc.cigcount.MainActivity;
 import upmc.cigcount.adapters.PacksAdapter;
 import upmc.cigcount.R;
+import upmc.cigcount.StatsActivity;
+import upmc.cigcount.model.Cigarette;
 import upmc.cigcount.model.Pack;
 import upmc.cigcount.model.User;
 
@@ -24,14 +23,13 @@ import upmc.cigcount.model.User;
  * Dialog fragment which displays packs list
  * Allows to choose one pack to be the current pack
  */
-public class ChangePackFragment extends DialogFragment {
+public class StatsChangePackFragment extends DialogFragment {
 
     private ListView packsList;
-    private TextView noPackText;
     private PacksAdapter adapter;
     private User user;
 
-    public ChangePackFragment() {
+    public StatsChangePackFragment() {
         // Required empty public constructor
     }
 
@@ -41,7 +39,6 @@ public class ChangePackFragment extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.fragment_change_pack, null);
         packsList = (ListView) v.findViewById(R.id.packsList);
-        noPackText = (TextView) v.findViewById(R.id.noPackText);
         user = CigCountApplication.getInstance().user();
         adapter = new PacksAdapter(getContext(), user.packs());
 
@@ -49,15 +46,9 @@ public class ChangePackFragment extends DialogFragment {
         builder.setTitle(R.string.change_pack_fragment_title);
         setList();
 
-        builder.setPositiveButton(R.string.change_pack_fragment_add, new DialogInterface.OnClickListener() {
-            @Override
+        builder.setNegativeButton(R.string.change_pack_fragment_cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                startActivity(new Intent(getContext(), CreatePackActivity.class));
-            }
-        })
-        .setNegativeButton(R.string.change_pack_fragment_cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                ChangePackFragment.this.getDialog().cancel();
+                StatsChangePackFragment.this.getDialog().cancel();
             }
         });
 
@@ -69,24 +60,32 @@ public class ChangePackFragment extends DialogFragment {
      * Clicked pack become the new current pack
      */
     private void setList() {
-        if(user.packs().isEmpty()) {
-            noPackText.setText(R.string.change_pack_fragment_empty);
-        } else {
-            packsList.setAdapter(adapter);
-            registerForContextMenu(packsList);
+        packsList.setAdapter(adapter);
+        registerForContextMenu(packsList);
 
-            packsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Pack selectedPack = user.packs().get(position);
+        packsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Pack selectedPack = user.packs().get(position);
+                if(cigsExists(selectedPack)) {
+                    ((StatsActivity) getActivity()).setCurrentPack(selectedPack);
+                    StatsChangePackFragment.this.getDialog().cancel();
+                } else
+                    Toast.makeText(getContext(), R.string.no_data, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
-                    user.setCurrentPack(selectedPack);
-                    CigCountApplication.getInstance().saveData();
-                    ((MainActivity) getActivity()).setCurrentPack();
-                    ChangePackFragment.this.getDialog().cancel();
-                }
-            });
-        }
+    /**
+     * Check if cigarettes were added with this pack
+     * @param selectedPack the selected Pack
+     * @return true if cigarettes were added
+     */
+    private Boolean cigsExists(Pack selectedPack) {
+        for(Cigarette c : user.cigSmoked())
+            if(c.pack() == selectedPack)
+                return true;
+        return false;
     }
 
 }

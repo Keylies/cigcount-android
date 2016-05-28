@@ -4,30 +4,23 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-import com.google.gson.Gson;
+import com.cedarsoftware.util.io.JsonReader;
+import com.cedarsoftware.util.io.JsonWriter;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 
-import upmc.cigcount.model.Cigarette;
-import upmc.cigcount.model.Pack;
 import upmc.cigcount.model.User;
 
 /**
- * Created by Clément on 21/05/2016.
+ * Application class which manage CigCount data
+ * Load and save user data from internal storage
  */
 public class CigCountApplication extends Application {
 
     private User user;
     static CigCountApplication singleton;
     private final String DATA_FILE = "cigcount_data";
-    private Gson gson = new Gson();
 
     @Override
     public void onCreate() {
@@ -44,23 +37,47 @@ public class CigCountApplication extends Application {
         return user;
     }
 
+    /**
+     * Empty user's cigarettes and save data
+     */
+    public void resetCigs() {
+        user.resetCigs();
+        saveData();
+    }
+
+    /**
+     * Empty user's packs and save data
+     */
+    public void resetPacks() {
+        user.resetPacks();
+        saveData();
+    }
+
+    /**
+     * Create a new empty user and save data
+     */
     public void resetData() {
         user = new User();
         saveData();
     }
 
+    /**
+     * Serialize user object to JSON into an internal file
+     */
     public void saveData() {
-        FileOutputStream fos = null;
-
         try {
-            fos = openFileOutput(DATA_FILE, Context.MODE_PRIVATE);
-            fos.write(gson.toJson(user).getBytes());
-            fos.close();
+            JsonWriter jw = new JsonWriter(openFileOutput(DATA_FILE, Context.MODE_PRIVATE));
+            jw.write(user);
+            jw.close();
         } catch(Exception e) {
             Log.i("Exception :", e.toString());
         }
     }
 
+    /**
+     * Test if internal data file exists to load data
+     * If not, create a empty user
+     */
     private void loadUser() {
         File dataFile = new File(getFilesDir().getPath() + "/" + DATA_FILE);
 
@@ -71,56 +88,18 @@ public class CigCountApplication extends Application {
         }
     }
 
+    /**
+     * Unserialize JSON from internal file to user object
+     */
     private void loadData() {
-        FileInputStream fis = null;
+        FileInputStream fis;
 
         try {
             fis = openFileInput(DATA_FILE);
-            user = gson.fromJson(new BufferedReader(new InputStreamReader(fis)), User.class);
-            Log.i("user", user.toString());
+            user = (User) new JsonReader(fis).readObject();
             fis.close();
         } catch(Exception e) {
             Log.i("Exception :", e.toString());
         }
-    }
-
-    private void readData() {
-        FileInputStream fis = null;
-
-        try {
-            fis = openFileInput(DATA_FILE);
-            InputStreamReader inputStreamReader = new InputStreamReader(fis);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuffer stringBuffer = new StringBuffer();
-            String test;
-            while ((test = bufferedReader.readLine()) != null) {
-                stringBuffer.append(test);
-            }
-            Log.i("Read File Test", stringBuffer.toString());
-            fis.close();
-        } catch(Exception e) {
-            Log.i("Exception :", e.toString());
-        }
-    }
-
-    private void addTestData() {
-        Pack newPack = new Pack("test", 20, 20, 20, 20, 20, new HashMap<String, Float>());
-        user.addPack(newPack);
-        user.setCurrentPack(newPack);
-
-        for(int i = 1; i <= 3; i++) {
-            user.addPack(new Pack("test" + i, 20, 20, 20, 20, 20, new HashMap<String, Float>()));
-        }
-
-        Date today = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(today);
-        for(int i = 1; i <= 70; i++) {
-            c.add(Calendar.DATE, i);
-            for(int j = 0; j < 3; j++) {
-                user.cigSmoked().add(new Cigarette(newPack, c.getTime()));
-            }
-        }
-
     }
 }

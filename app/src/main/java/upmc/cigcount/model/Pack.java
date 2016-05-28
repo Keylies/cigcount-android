@@ -2,9 +2,6 @@ package upmc.cigcount.model;
 
 import java.util.HashMap;
 
-/**
- * Created by Clément on 16/05/2016.
- */
 public class Pack {
     private static int last_id;
     private int id;
@@ -59,5 +56,9 @@ public class Pack {
         this.paperRate = paperRate;
         this.agentsRate = agentsRate;
         this.components = components;
+    }
+
+    public float singleCigPrice() {
+        return price / nbCigarettes;
     }
 }

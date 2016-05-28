@@ -22,8 +22,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile files('libs/gson-2.6.2.jar')
+    compile files('libs/json-io-4.4.0.jar')
     compile files('libs/mpandroidchartlibrary-2-2-4.jar')
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.android.support:design:23.3.0'
 }

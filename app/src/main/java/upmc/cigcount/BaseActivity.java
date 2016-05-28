@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * Base activity which set up CigCount menu
+ */
 public class BaseActivity extends AppCompatActivity {
 
     @Override

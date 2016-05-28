@@ -7,17 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="upmc.cigcount.fragments.ChangePackFragment">
+    tools:context="upmc.cigcount.fragments.VisualStatsFragment">
 
-    <ListView android:id="@+id/packsList"
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </ListView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/noPackText"/>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>
