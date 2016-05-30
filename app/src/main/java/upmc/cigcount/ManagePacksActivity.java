@@ -1,5 +1,6 @@
 package upmc.cigcount;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
@@ -37,6 +38,10 @@ public class ManagePacksActivity extends BaseActivity {
         packsList = (ListView) findViewById(R.id.packsList);
         adapter = new PacksAdapter(this, user.packs());
         setList();
+    }
+
+    public void goCreatePack(View view){
+        startActivity(new Intent(this, CreatePackActivity.class));
     }
 
     /**
