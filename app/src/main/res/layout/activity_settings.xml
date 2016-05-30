@@ -59,6 +59,7 @@
             android:drawableTop="@drawable/homeiconsilhouette"
             android:background="@color/transparent"
             android:text="Home"
+            android:textSize="10dp"
             />
 
         <Button android:id="@+id/butPack"
@@ -69,6 +70,7 @@
             android:drawableTop="@drawable/cigarettespackage"
             android:background="@color/transparent"
             android:text="Manage Packs"
+            android:textSize="10dp"
             />
 
         <Button android:id="@+id/butStats"
@@ -79,6 +81,7 @@
             android:drawableTop="@drawable/barchart"
             android:background="@color/transparent"
             android:text="Statistics"
+            android:textSize="10dp"
             />
 
         <Button android:id="@+id/butSettings"
@@ -89,6 +92,7 @@
             android:drawableTop="@drawable/settings"
             android:background="@color/transparent"
             android:text="Settings"
+            android:textSize="10dp"
             />
     </LinearLayout>
 
