@@ -3,6 +3,9 @@ package upmc.cigcount;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Random;
 
 import upmc.cigcount.fragments.ChangePackFragment;
 
@@ -16,6 +19,20 @@ public class MainActivity extends BaseActivity {
     TextView cigNumber;
     CigCountApplication app;
     ChangePackFragment changeFragment;
+
+    private static final Random RANDOM = new Random();
+    private static final String[] WARNINGS = {
+            "Dont do this!",
+            "Sport may be the solution",
+            "Oups, you lost 11 minutes of life",
+            "That one wasn't great, right?",
+            "You could've bought a private jet so far",
+            "Nice breath man",
+            "Mix it with coffee",
+            "At least it's only tobacco ;)",
+            "Rolled ones are cheaper",
+            "So you like tar this much?"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +58,8 @@ public class MainActivity extends BaseActivity {
         } else {
             app.saveData();
             setCigNumber();
+            Toast.makeText(getApplicationContext(), WARNINGS[RANDOM.nextInt(WARNINGS.length)],
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
