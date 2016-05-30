@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
  * Base activity which set up CigCount menu
@@ -43,5 +44,21 @@ public class BaseActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void goHome(View view){
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public void goPacks(View view){
+        startActivity(new Intent(this, ManagePacksActivity.class));
+    }
+
+    public void goStats(View view){
+        startActivity(new Intent(this, StatsActivity.class));
+    }
+
+    public void goSettings(View view){
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 }

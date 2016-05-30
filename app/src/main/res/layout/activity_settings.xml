@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,25 +10,86 @@
     android:orientation="vertical"
     tools:context="upmc.cigcount.SettingsActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
     <Button android:id="@+id/butResetCigs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_settings_reset_cigs"
         android:layout_gravity="center_horizontal"
-        android:onClick="resetCigs" />
+        android:onClick="resetCigs"
+        android:layout_marginTop="50dp" />
 
     <Button android:id="@+id/butResetPacks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_settings_reset_packs"
         android:layout_gravity="center_horizontal"
-        android:onClick="resetPacks" />
+        android:onClick="resetPacks"
+        android:layout_marginTop="50dp" />
 
     <Button android:id="@+id/butResetData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_settings_reset_data"
         android:layout_gravity="center_horizontal"
-        android:onClick="resetData" />
+        android:onClick="resetData"
+        android:layout_marginTop="50dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true"
+        android:focusable="false"
+        android:padding="10dp">
 
-</LinearLayout>
+        <!--suppress AndroidDomInspection -->
+        <Button android:id="@+id/actionHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="goHome"
+            android:layout_gravity="bottom"
+            android:drawableTop="@drawable/homeiconsilhouette"
+            android:background="@color/transparent"
+            android:text="Home"
+            />
+
+        <Button android:id="@+id/butPack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="goPacks"
+            android:layout_gravity="bottom"
+            android:drawableTop="@drawable/cigarettespackage"
+            android:background="@color/transparent"
+            android:text="Manage Packs"
+            />
+
+        <Button android:id="@+id/butStats"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="goStats"
+            android:layout_gravity="bottom"
+            android:drawableTop="@drawable/barchart"
+            android:background="@color/transparent"
+            android:text="Statistics"
+            />
+
+        <Button android:id="@+id/butSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="goSettings"
+            android:layout_gravity="bottom"
+            android:drawableTop="@drawable/settings"
+            android:background="@color/transparent"
+            android:text="Settings"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

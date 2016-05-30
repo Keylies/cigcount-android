@@ -7,42 +7,123 @@
     tools:context="upmc.cigcount.MainActivity"
     android:weightSum="1">
 
-    <TextView android:id="@+id/textPack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_main_pack"
-        android:layout_gravity="center_horizontal" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView android:id="@+id/textCurrentPack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_gravity="center_horizontal" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
 
-    <Button android:id="@+id/butChangePack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_main_change_pack"
-        android:layout_gravity="center_horizontal"
-        android:onClick="changePack" />
+            <TextView android:id="@+id/textPack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_main_pack"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/textCigNumber"
+                android:layout_centerHorizontal="true" />
 
-    <Button android:id="@+id/butAddCig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_main_add_cig"
-        android:layout_gravity="center_horizontal"
-        android:onClick="addCig" />
+            <TextView android:id="@+id/textCurrentPack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/textPack"
+                android:layout_alignEnd="@+id/butAddCig" />
 
-    <TextView android:id="@+id/textCigNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.32" />
+            <Button android:id="@+id/butChangePack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_main_change_pack"
+                android:layout_gravity="center_horizontal"
+                android:onClick="changePack"
+                android:layout_alignBaseline="@+id/butAddCig"
+                android:layout_alignBottom="@+id/butAddCig"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp" />
 
-    <TextView android:id="@+id/textCigSmoked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_main_cig_smoked"
-        android:layout_gravity="center_horizontal" />
+
+            <TextView android:id="@+id/textCigSmoked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_main_cig_smoked"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/textCurrentPack"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="53dp" />
+
+            <TextView android:id="@+id/textCigNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
+
+            <Button android:id="@+id/butAddCig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_main_add_cig"
+            android:onClick="addCig"
+            android:layout_below="@+id/textCigSmoked"
+            android:layout_alignStart="@+id/butChangePack"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_alignParentBottom="true"
+            android:focusable="false"
+            android:padding="10dp">
+
+            <!--suppress AndroidDomInspection -->
+            <Button android:id="@+id/actionHome"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:onClick="goHome"
+                android:layout_gravity="bottom"
+                android:drawableTop="@drawable/homeiconsilhouette"
+                android:background="@color/transparent"
+                android:text="Home"
+                />
+
+            <Button android:id="@+id/butPack"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:onClick="goPacks"
+                android:layout_gravity="bottom"
+                android:drawableTop="@drawable/cigarettespackage"
+                android:background="@color/transparent"
+                android:text="Manage Packs"
+                />
+
+            <Button android:id="@+id/butStats"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:onClick="goStats"
+                android:layout_gravity="bottom"
+                android:drawableTop="@drawable/barchart"
+                android:background="@color/transparent"
+                android:text="Statistics"
+                />
+
+            <Button android:id="@+id/butSettings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="goSettings"
+                android:layout_gravity="bottom"
+                android:drawableTop="@drawable/settings"
+                android:background="@color/transparent"
+                android:text="Settings"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
 </LinearLayout>
